@@ -19,8 +19,8 @@ export default function FileList({
       {/* List Header */}
       <div className="flex items-center justify-between mb-4 px-1">
         <div className="flex items-center gap-2">
-          <h3 className="font-heading font-bold text-lg text-white">
-            Upload Queue <span className="text-indigo-400 font-normal text-sm">({fileList.length} files)</span>
+          <h3 className="font-heading font-bold text-lg text-stone-900">
+            Upload Queue <span className="text-teal-700 font-semibold text-sm">({fileList.length} files)</span>
           </h3>
         </div>
 
@@ -29,10 +29,10 @@ export default function FileList({
             <button
               type="button"
               onClick={onCompressAll}
-              className="px-4 py-2 rounded-xl glow-gradient hover:opacity-90 text-white font-bold text-xs shadow-lg shadow-indigo-500/20 flex items-center gap-1.5 transition-all"
+              className="btn-interactive px-4 py-2 rounded-xl bg-gradient-to-r from-teal-800 via-emerald-800 to-seablue-900 hover:from-teal-900 hover:to-emerald-900 text-white font-extrabold text-xs shadow-lg shadow-teal-900/25 flex items-center gap-1.5 transition-all active:scale-95 border border-teal-600/30"
             >
-              <Play className="w-3.5 h-3.5 fill-current" />
-              <span>Compress Files</span>
+              <Play className="w-3.5 h-3.5 fill-current text-teal-200" />
+              <span className="text-white font-extrabold">Compress Files</span>
             </button>
           )}
 
@@ -40,7 +40,7 @@ export default function FileList({
             <button
               type="button"
               onClick={onClearAll}
-              className="px-3 py-2 rounded-xl bg-slate-900 border border-slate-800 hover:bg-slate-800 text-slate-400 hover:text-slate-200 text-xs font-medium flex items-center gap-1.5 transition-colors"
+              className="btn-interactive px-3 py-2 rounded-xl bg-[#efece2] border border-stone-400 hover:bg-rose-100 text-stone-900 hover:text-rose-800 text-xs font-bold flex items-center gap-1.5 transition-colors active:bg-rose-600 active:text-white active:scale-95"
             >
               <Trash2 className="w-3.5 h-3.5" />
               <span>Clear Queue</span>

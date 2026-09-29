@@ -8,6 +8,26 @@ Unlike simple archiving utilities that wrap original files in a ZIP container, C
 
 ---
 
+## 📷 Project Interface & Input-Output Screenshots
+
+### 1. Main Header, Hero Banner & Compression Settings
+![Hero and Compression Settings](docs/screenshots/hero-and-settings.png)
+*Figure 1: Header navigation, hero introduction, and customizable compression level & output format controls.*
+
+### 2. Drag & Drop Upload Zone & Queue Input
+![Drag and Drop Upload Queue](docs/screenshots/upload-and-queue.png)
+*Figure 2: Drag-and-drop file upload zone supporting JPG, PNG, WebP & PDF files with real-time queue status.*
+
+### 3. Compression Results Dashboard & Output Savings Metrics
+![Compression Results Dashboard](docs/screenshots/compression-results.png)
+*Figure 3: Detailed output results panel showing original vs compressed file sizes, byte savings, percentage reduction, and single/ZIP download triggers.*
+
+### 4. Technical Architecture & How Compression Works
+![How Compression Works Section](docs/screenshots/how-it-works.png)
+*Figure 4: Educational overview explaining Sharp image pipeline, pdf-lib structural stream optimization, and system responsibilities.*
+
+---
+
 ## 🌟 Key Features
 
 - 🖼️ **Real Image Compression**: Server-side processing powered by [Sharp](https://sharp.pixelplumbing.com/) (supports JPG, JPEG, PNG, WebP).

@@ -163,7 +163,7 @@ export default function App() {
   const allCompleted = fileItems.length > 0 && fileItems.every((f) => f.status === 'completed');
 
   return (
-    <div className="min-h-screen flex flex-col bg-dark-bg text-slate-100">
+    <div className="min-h-screen flex flex-col bg-[#f6f3eb] text-emerald-950 selection:bg-teal-200 selection:text-teal-900">
       <Header />
 
       <main className="flex-1 max-w-6xl w-full mx-auto px-4 py-8">
@@ -205,13 +205,13 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-slate-800/80 py-6 text-center text-xs text-slate-500">
+      <footer className="border-t border-emerald-900/10 py-6 text-center text-xs text-stone-600 bg-[#efece2]/50">
         <div className="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p>© {new Date().getFullYear()} CompressBox. Real Image & PDF File Compression.</p>
           <p className="flex items-center gap-2">
-            <span>Powered by Sharp & pdf-lib</span>
+            <span className="font-medium text-teal-800">Powered by Sharp & pdf-lib</span>
             <span>•</span>
-            <span>Zero Persistent DB</span>
+            <span className="font-medium text-emerald-800">Zero Persistent DB</span>
           </p>
         </div>
       </footer>

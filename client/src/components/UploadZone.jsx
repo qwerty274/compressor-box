@@ -84,10 +84,10 @@ export default function UploadZone({ onFilesSelected, isDisabled }) {
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
         onClick={() => !isDisabled && fileInputRef.current?.click()}
-        className={`relative group cursor-pointer rounded-3xl p-8 sm:p-12 text-center transition-all duration-300 border-2 border-dashed ${
+        className={`relative group cursor-pointer rounded-3xl p-8 sm:p-12 text-center transition-all duration-300 border-2 border-dashed shadow-sm ${
           isDragOver
-            ? 'border-indigo-400 bg-indigo-500/10 scale-[1.01] shadow-2xl shadow-indigo-500/20'
-            : 'border-slate-700/80 bg-slate-900/60 hover:border-indigo-500/60 hover:bg-slate-900/90'
+            ? 'border-emerald-500 bg-emerald-100/60 scale-[1.01] shadow-2xl shadow-emerald-600/20'
+            : 'border-teal-700/30 bg-[#faf8f3] hover:border-teal-500 hover:bg-[#f7f3e8]'
         } ${isDisabled ? 'opacity-50 cursor-not-allowed' : ''}`}
       >
         <input
@@ -101,41 +101,41 @@ export default function UploadZone({ onFilesSelected, isDisabled }) {
         />
 
         {/* Inner Graphic */}
-        <div className="mx-auto w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-tr from-indigo-600 to-purple-600 p-0.5 shadow-xl shadow-indigo-500/20 mb-5 group-hover:scale-110 transition-transform duration-300 flex items-center justify-center">
-          <div className="w-full h-full bg-slate-950 rounded-[14px] flex items-center justify-center">
-            <UploadCloud className="w-8 h-8 sm:w-10 sm:h-10 text-indigo-400 group-hover:text-indigo-300 transition-colors" />
+        <div className="mx-auto w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-tr from-seablue-600 to-emeraldgreen-600 p-0.5 shadow-xl shadow-teal-600/20 mb-5 group-hover:scale-110 transition-transform duration-300 flex items-center justify-center">
+          <div className="w-full h-full bg-[#f6f3eb] rounded-[14px] flex items-center justify-center">
+            <UploadCloud className="w-8 h-8 sm:w-10 sm:h-10 text-teal-700 group-hover:text-emerald-700 transition-colors" />
           </div>
         </div>
 
         {/* Main Text */}
-        <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
+        <h3 className="text-xl sm:text-2xl font-bold text-stone-900 mb-2">
           Drop your files here
         </h3>
-        <p className="text-sm text-slate-400 mb-6">
+        <p className="text-sm text-stone-600 mb-6">
           or click anywhere to browse from your device
         </p>
 
         {/* Action Button */}
-        <div className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm shadow-lg shadow-indigo-600/30 transition-all mb-6">
-          <FilePlus className="w-4 h-4" />
-          <span>Choose Files</span>
+        <div className="btn-interactive inline-flex items-center gap-2.5 px-7 py-3.5 rounded-2xl bg-gradient-to-r from-teal-800 via-emerald-800 to-seablue-900 hover:from-teal-900 hover:to-emerald-900 text-white font-extrabold text-sm shadow-xl shadow-teal-900/30 border border-teal-600/40 transition-all mb-6 active:scale-95">
+          <FilePlus className="w-4.5 h-4.5 text-teal-200" />
+          <span className="text-white tracking-wide font-extrabold">Choose Files</span>
         </div>
 
         {/* Allowed formats hint */}
-        <div className="flex flex-wrap items-center justify-center gap-3 text-xs text-slate-500 font-medium">
-          <span className="px-2.5 py-1 rounded-md bg-slate-950/60 border border-slate-800">
+        <div className="flex flex-wrap items-center justify-center gap-3 text-xs text-stone-600 font-medium">
+          <span className="px-2.5 py-1 rounded-md bg-[#efece2] border border-stone-300 font-semibold text-teal-900">
             JPG
           </span>
-          <span className="px-2.5 py-1 rounded-md bg-slate-950/60 border border-slate-800">
+          <span className="px-2.5 py-1 rounded-md bg-[#efece2] border border-stone-300 font-semibold text-teal-900">
             PNG
           </span>
-          <span className="px-2.5 py-1 rounded-md bg-slate-950/60 border border-slate-800">
+          <span className="px-2.5 py-1 rounded-md bg-[#efece2] border border-stone-300 font-semibold text-teal-900">
             WebP
           </span>
-          <span className="px-2.5 py-1 rounded-md bg-slate-950/60 border border-slate-800">
+          <span className="px-2.5 py-1 rounded-md bg-[#efece2] border border-stone-300 font-semibold text-emerald-900">
             PDF
           </span>
-          <span className="text-slate-600">• Max 25 MB per file</span>
+          <span className="text-stone-500">• Max 25 MB per file</span>
         </div>
       </div>
 

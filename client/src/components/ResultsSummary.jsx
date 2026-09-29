@@ -31,60 +31,60 @@ export default function ResultsSummary({
 
   return (
     <div className="w-full max-w-3xl mx-auto mb-10 animate-fadeIn">
-      <div className="glass-panel rounded-3xl p-6 sm:p-8 border border-indigo-500/30 relative overflow-hidden shadow-2xl shadow-indigo-500/10">
+      <div className="glass-panel rounded-3xl p-6 sm:p-8 border border-teal-500/40 relative overflow-hidden shadow-2xl shadow-teal-600/10 bg-[#faf8f2]">
         {/* Background ambient light */}
-        <div className="absolute -right-20 -top-20 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -right-20 -top-20 w-64 h-64 bg-teal-500/10 rounded-full blur-3xl pointer-events-none" />
 
         {/* Header */}
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-10 h-10 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+          <div className="w-10 h-10 rounded-2xl bg-emerald-100 border border-emerald-300 flex items-center justify-center text-emerald-700">
             <CheckCircle2 className="w-6 h-6" />
           </div>
           <div>
-            <h2 className="text-2xl font-extrabold text-white flex items-center gap-2">
+            <h2 className="text-2xl font-extrabold text-stone-900 flex items-center gap-2">
               <span>Compression Complete</span>
               <span className="text-xl">🎉</span>
             </h2>
-            <p className="text-xs text-slate-400">
-              Successfully processed <span className="font-semibold text-slate-200">{completedFiles.length} file{completedFiles.length > 1 ? 's' : ''}</span>
+            <p className="text-xs text-stone-600">
+              Successfully processed <span className="font-bold text-stone-900">{completedFiles.length} file{completedFiles.length > 1 ? 's' : ''}</span>
             </p>
           </div>
         </div>
 
         {/* Stats Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-6">
-          <div className="p-3.5 sm:p-4 rounded-2xl bg-slate-900/80 border border-slate-800 text-center">
-            <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block mb-1">
+          <div className="p-3.5 sm:p-4 rounded-2xl bg-[#efece2] border border-stone-300 text-center">
+            <span className="text-[11px] font-bold text-stone-600 uppercase tracking-wider block mb-1">
               Original Size
             </span>
-            <span className="text-base sm:text-lg font-extrabold text-slate-200">
+            <span className="text-base sm:text-lg font-extrabold text-stone-900">
               {formatFileSize(totalOriginal)}
             </span>
           </div>
 
-          <div className="p-3.5 sm:p-4 rounded-2xl bg-slate-900/80 border border-slate-800 text-center">
-            <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block mb-1">
+          <div className="p-3.5 sm:p-4 rounded-2xl bg-[#efece2] border border-stone-300 text-center">
+            <span className="text-[11px] font-bold text-stone-600 uppercase tracking-wider block mb-1">
               Compressed Size
             </span>
-            <span className="text-base sm:text-lg font-extrabold text-indigo-400">
+            <span className="text-base sm:text-lg font-extrabold text-seablue-700">
               {formatFileSize(totalCompressed)}
             </span>
           </div>
 
-          <div className="p-3.5 sm:p-4 rounded-2xl bg-slate-900/80 border border-slate-800 text-center">
-            <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block mb-1">
+          <div className="p-3.5 sm:p-4 rounded-2xl bg-[#efece2] border border-stone-300 text-center">
+            <span className="text-[11px] font-bold text-stone-600 uppercase tracking-wider block mb-1">
               Total Saved
             </span>
-            <span className="text-base sm:text-lg font-extrabold text-emerald-400">
+            <span className="text-base sm:text-lg font-extrabold text-emerald-700">
               {formatFileSize(totalSaved)}
             </span>
           </div>
 
-          <div className="p-3.5 sm:p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-center">
-            <span className="text-[11px] font-semibold text-emerald-400 uppercase tracking-wider block mb-1">
+          <div className="p-3.5 sm:p-4 rounded-2xl bg-emerald-100 border border-emerald-300 text-center">
+            <span className="text-[11px] font-bold text-emerald-800 uppercase tracking-wider block mb-1">
               Overall Reduction
             </span>
-            <span className="text-base sm:text-lg font-extrabold text-emerald-300">
+            <span className="text-base sm:text-lg font-extrabold text-emerald-900">
               {formatPercentage(overallReduction)}
             </span>
           </div>
@@ -96,28 +96,28 @@ export default function ResultsSummary({
             <button
               type="button"
               onClick={onDownloadZip}
-              className="w-full sm:w-auto px-6 py-3 rounded-xl glow-gradient hover:opacity-95 text-white font-bold text-sm shadow-xl shadow-indigo-600/30 flex items-center justify-center gap-2 transition-all"
+              className="btn-interactive w-full sm:w-auto px-6 py-3 rounded-xl bg-gradient-to-r from-teal-800 via-emerald-800 to-seablue-900 hover:from-teal-900 hover:to-emerald-900 text-white font-extrabold text-sm shadow-xl shadow-teal-900/30 flex items-center justify-center gap-2 transition-all active:scale-95 border border-teal-600/40"
             >
-              <Download className="w-4 h-4" />
-              <span>Download All (ZIP)</span>
+              <Download className="w-4 h-4 text-teal-200" />
+              <span className="text-white font-extrabold">Download All (ZIP)</span>
             </button>
           ) : (
             <button
               type="button"
               onClick={() => completedFiles[0] && window.open(completedFiles[0].downloadUrl, '_blank')}
-              className="w-full sm:w-auto px-6 py-3 rounded-xl glow-gradient hover:opacity-95 text-white font-bold text-sm shadow-xl shadow-indigo-600/30 flex items-center justify-center gap-2 transition-all"
+              className="btn-interactive w-full sm:w-auto px-6 py-3 rounded-xl bg-gradient-to-r from-teal-800 via-emerald-800 to-seablue-900 hover:from-teal-900 hover:to-emerald-900 text-white font-extrabold text-sm shadow-xl shadow-teal-900/30 flex items-center justify-center gap-2 transition-all active:scale-95 border border-teal-600/40"
             >
-              <Download className="w-4 h-4" />
-              <span>Download Compressed File</span>
+              <Download className="w-4 h-4 text-teal-200" />
+              <span className="text-white font-extrabold">Download Compressed File</span>
             </button>
           )}
 
           <button
             type="button"
             onClick={onReset}
-            className="w-full sm:w-auto px-5 py-3 rounded-xl bg-slate-900 border border-slate-800 hover:bg-slate-800 text-slate-300 hover:text-white font-semibold text-xs flex items-center justify-center gap-2 transition-colors"
+            className="btn-interactive w-full sm:w-auto px-5 py-3 rounded-xl bg-[#efece2] border border-stone-400 hover:bg-stone-300 text-stone-900 font-bold text-xs flex items-center justify-center gap-2 transition-colors active:bg-teal-900 active:text-white active:scale-95"
           >
-            <RefreshCw className="w-3.5 h-3.5" />
+            <RefreshCw className="w-3.5 h-3.5 text-teal-800" />
             <span>Compress More Files</span>
           </button>
         </div>
