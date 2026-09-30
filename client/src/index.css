@@ -8,8 +8,12 @@
     color: #064e3b;
     font-family: 'Inter', sans-serif;
   }
-  
-  h1, h2, h3, h4, .font-heading {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-heading {
     font-family: 'Outfit', sans-serif;
   }
 }
@@ -19,68 +23,46 @@
   width: 8px;
   height: 8px;
 }
+
 ::-webkit-scrollbar-track {
-  background: #eee7d7;
-}
-::-webkit-scrollbar-thumb {
-  background: #0d9488;
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #059669;
+  background: #0f172a;
 }
 
-/* Glassmorphism utility for Beige & Sea Blue theme */
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* Glassmorphism utility */
 .glass-panel {
-  background: rgba(255, 253, 248, 0.88);
+  background: rgba(21, 28, 44, 0.7);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(13, 148, 136, 0.2);
-  box-shadow: 0 10px 30px -10px rgba(2, 132, 199, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .glass-panel-interactive {
-  background: rgba(255, 253, 248, 0.92);
+  background: rgba(21, 28, 44, 0.75);
   backdrop-filter: blur(16px);
-  border: 1px solid rgba(13, 148, 136, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 4px 20px -5px rgba(2, 132, 199, 0.06);
 }
 
 .glass-panel-interactive:hover {
-  border-color: rgba(2, 132, 199, 0.45);
-  box-shadow: 0 12px 30px -8px rgba(2, 132, 199, 0.15);
+  border-color: rgba(99, 102, 241, 0.4);
+  box-shadow: 0 10px 30px -10px rgba(99, 102, 241, 0.15);
 }
 
-/* Sea Blue & Emerald Green Gradients */
 .glow-gradient {
-  background: linear-gradient(135deg, #0284c7 0%, #0d9488 50%, #059669 100%);
-}
-
-.glow-gradient-alt {
-  background: linear-gradient(135deg, #059669 0%, #0891b2 50%, #0284c7 100%);
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, #0284c7 0%, #0d9488 45%, #059669 100%);
+  background: linear-gradient(135deg, #818cf8 0%, #c084fc 50%, #f472b6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-
-.text-gradient-sea {
-  background: linear-gradient(135deg, #0369a1 0%, #0891b2 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* On-click Interactive Button effect */
-.btn-interactive {
-  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.btn-interactive:active {
-  transform: scale(0.94);
-  filter: brightness(1.1);
-  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.4) !important;
-}
-
