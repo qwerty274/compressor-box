@@ -114,7 +114,68 @@ export async function compressImage(inputPath, outputPath, options = {}) {
   // Write output file
   await imagePipeline.toFile(outputPath);
 
-  const stats = fs.statSync(outputPath);
+  let stats = fs.statSync(outputPath);
+  const TARGET_MAX_SIZE = 950 * 1024; // 950 KB threshold to guarantee under 1 MB
+
+  // If resulting image is over 950 KB (~1 MB), perform adaptive target compression pass
+  if (stats.size > TARGET_MAX_SIZE) {
+    let currentQuality = quality;
+    let currentWidth = resizeWidth || originalWidth;
+
+    while (stats.size > TARGET_MAX_SIZE && (currentQuality > 25 || currentWidth > 800)) {
+      currentQuality = Math.max(25, currentQuality - 15);
+
+      if (currentWidth > 1920) {
+        currentWidth = 1920;
+      } else if (stats.size > 1.5 * 1024 * 1024 && currentWidth > 1400) {
+        currentWidth = 1400;
+      }
+
+      let adaptivePipeline = sharp(inputPath);
+      if (currentWidth && originalWidth > currentWidth) {
+        adaptivePipeline = adaptivePipeline.resize({
+          width: currentWidth,
+          fit: 'inside',
+          withoutEnlargement: true
+        });
+      }
+
+      if (targetFormat === 'jpeg' || targetFormat === 'jpg') {
+        if (metadata.hasAlpha) {
+          adaptivePipeline = adaptivePipeline.flatten({ background: '#ffffff' });
+        }
+        adaptivePipeline = adaptivePipeline.jpeg({
+          quality: currentQuality,
+          progressive: true,
+          chromaSubsampling: '4:2:0'
+        });
+      } else if (targetFormat === 'webp') {
+        adaptivePipeline = adaptivePipeline.webp({ quality: currentQuality });
+      } else if (targetFormat === 'png') {
+        adaptivePipeline = adaptivePipeline.png({ quality: currentQuality, palette: true });
+      } else {
+        adaptivePipeline = adaptivePipeline.jpeg({ quality: currentQuality });
+      }
+
+      const tempAdaptivePath = `${outputPath}.tmp.adaptive`;
+      try {
+        await adaptivePipeline.toFile(tempAdaptivePath);
+        const adaptiveStats = fs.statSync(tempAdaptivePath);
+
+        if (adaptiveStats.size < stats.size) {
+          fs.renameSync(tempAdaptivePath, outputPath);
+          stats = fs.statSync(outputPath);
+        } else {
+          if (fs.existsSync(tempAdaptivePath)) fs.unlinkSync(tempAdaptivePath);
+          break;
+        }
+      } catch (adaptErr) {
+        if (fs.existsSync(tempAdaptivePath)) fs.unlinkSync(tempAdaptivePath);
+        break;
+      }
+    }
+  }
+
   return {
     format: targetFormat,
     size: stats.size,
